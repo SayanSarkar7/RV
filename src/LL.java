@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class LL {
+    Node head;
     class Node{
         String data;
         Node next;
@@ -31,9 +32,56 @@ public class LL {
         }
         currNode.next=newNode;
     }
+    public void printList(){
+        if(head==null){
+            System.out.println("List is empty");
+            return;
+        }
+        Node currNode=head;
+        while(currNode!=null){
+            System.out.print(currNode.data+" -> ");
+            currNode=currNode.next;
+        }
+        System.out.println("null");
+    }
+    public void deleteFirst(){
+        if(head==null){
+            System.out.print("null");
+            return;
+        }
+        head=head.next;
+    }
+    public void deleteLast(){
+        if(head==null){
+            System.out.print("null");
+            return;
+        }
+        if(head.next==null){
+            head=null;
+            return;
+        }
+        Node lastNode=head.next;
+        Node secondLastNode=head;
+        while(lastNode.next!=null){
+            lastNode=lastNode.next;
+            secondLastNode=secondLastNode.next;
+        }
+        secondLastNode.next=null;
+    }
     public static void main(String[] args){
         LL list=new LL();
         list.addFirst("a");
         list.addFirst("is");
+        list.printList();
+        list.addLast("good");
+        list.addLast("boy");
+        list.printList();
+        list.deleteFirst();
+        list.printList();
+        list.deleteLast();
+        list.printList();
+        list.deleteLast();
+        list.deleteLast();
+        list.printList();
     }
 }
