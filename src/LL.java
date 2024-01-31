@@ -2,12 +2,17 @@ import java.util.*;
 
 public class LL {
     Node head;
+    private int size=0;
+    LL(){
+        this.size=0;
+    }
     class Node{
         String data;
         Node next;
         Node(String data){
             this.data=data;
             this.next=null;
+            size++;
         }
     }
     // add->first,last
@@ -49,6 +54,7 @@ public class LL {
             System.out.print("null");
             return;
         }
+        size--;
         head=head.next;
     }
     public void deleteLast(){
@@ -56,6 +62,7 @@ public class LL {
             System.out.print("null");
             return;
         }
+        size--;
         if(head.next==null){
             head=null;
             return;
@@ -67,6 +74,9 @@ public class LL {
             secondLastNode=secondLastNode.next;
         }
         secondLastNode.next=null;
+    }
+    public int getSize(){
+        return size;
     }
     public static void main(String[] args){
         LL list=new LL();
@@ -81,7 +91,8 @@ public class LL {
         list.deleteLast();
         list.printList();
         list.deleteLast();
-        list.deleteLast();
+//        list.deleteLast();
         list.printList();
+        System.out.print(list.getSize());
     }
 }
